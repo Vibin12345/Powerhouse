@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome to Vibin Shop</title>
+  <meta name="description" content="Welcome to Vibin Shop — simple and sleek e-commerce landing page." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1220; --card:#10192e; --muted:#a5b0c2; --text:#e7efff;
+      --brand:#66e0a3; --brand-2:#7db3ff; --accent:#ffd166;
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,#0b1220 0%,#0e1630 60%,#0b1220 100%);color:var(--text);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrapper{max-width:1200px;margin:0 auto;padding:24px}
+    /* Header */
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);
+      padding:14px 18px;border-radius:14px;backdrop-filter: blur(8px)
+    }
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+    .logo{
+      width:36px;height:36px;border-radius:10px;background:
+        radial-gradient(60% 80% at 40% 30%, var(--brand) 0%, transparent 60%),
+        radial-gradient(60% 80% at 70% 70%, var(--brand-2) 0%, transparent 60%),
+        #0b1220;border:1px solid rgba(255,255,255,.1);
+      box-shadow:0 0 36px rgba(102,224,163,.25), inset 0 0 12px rgba(125,179,255,.15)
+    }
+    .nav .links{display:flex;gap:18px;font-weight:500;color:var(--muted)}
+    .cta{
+      background:linear-gradient(135deg,var(--brand),#46c88a);
+      color:#052418;padding:10px 16px;border:none;border-radius:12px;font-weight:700;cursor:pointer
+    }
+    /* Hero */
+    .hero{
+      margin:28px 0 20px;border-radius:var(--radius);
+      background:
+        radial-gradient(1200px 600px at 80% -10%,rgba(125,179,255,.15),transparent 60%),
+        radial-gradient(800px 500px at -10% 20%,rgba(102,224,163,.15),transparent 60%),
+        linear-gradient(180deg,#0d152b, #0b1220);
+      border:1px solid rgba(255,255,255,0.06);
+      overflow:hidden;position:relative
+    }
+    .hero-inner{padding:54px 26px 34px;display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+    .hero h1{font-size:40px;line-height:1.15;margin:0 0 10px}
+    .hero p{color:var(--muted);margin:0 0 18px}
+    .hero .chips{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 18px}
+    .chip{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);font-size:12px;color:#cdd7ea}
+    .hero-blob{
+      position:absolute;inset:auto -80px -120px auto;width:420px;height:420px;border-radius:50%;
+      background:radial-gradient(closest-side, rgba(102,224,163,.28), transparent 70%);
+      filter:blur(10px)
+    }
+    .hero img{
+      border-radius:16px;border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0 10px 40px rgba(0,0,0,.4)
+    }
+    .actions{display:flex;gap:10px}
+    .btn{
+      padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.12);
+      background:#0f1932;color:#e8f3ff;font-weight:700;cursor:pointer
+    }
+    .btn.primary{background:linear-gradient(135deg,var(--brand),#2fd18a);color:#072515;border:none}
+    .btn.secondary{background:transparent}
+    /* Products */
+    .section{margin:26px 0}
+    .section h2{margin:0 0 14px;font-size:26px}
+    .grid{
+      display:grid;gap:16px;
+      grid-template-columns:repeat(4,minmax(0,1fr))
+    }
+    @media (max-width:1024px){.hero-inner{grid-template-columns:1fr}.grid{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:720px){.grid{grid-template-columns:repeat(2,1fr)} .hero h1{font-size:30px}}
+    .card{
+      background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden;
+      transition:transform .2s ease, box-shadow .2s ease
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+    .thumb{aspect-ratio:1/1;overflow:hidden;background:#0a1122}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .info{padding:12px}
+    .title{font-weight:600;margin:0 0 6px}
+    .meta{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:14px}
+    .price{font-weight:700;color:#eaf4ff}
+    .add{margin-top:10px;width:100%}
+    .badge{
+      position:absolute;margin:10px;padding:6px 10px;background:rgba(255,209,102,.15);
+      border:1px solid rgba(255,209,102,.3);color:#ffe8ab;border-radius:999px;font-size:12px;font-weight:700
+    }
+    /* Footer */
+    footer{
+      margin:30px 0 10px;color:var(--muted);font-size:14px;text-align:center
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="nav">
+      <div class="brand">
+        <div class="logo"></div>
+        <span>Vibin Shop</span>
+      </div>
+      <nav class="links">
+        <a href="#new">New</a>
+        <a href="#popular">Popular</a>
+        <a href="#deals">Deals</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="cta" onclick="scrollToGrid()">Shop Now</button>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner wrapper" style="padding:36px 24px 26px">
+        <div>
+          <h1>Welcome to Vibin Shop</h1>
+          <p>Hand-picked gadgets & essentials at sweet prices. Fast delivery, secure checkout, and 24×7 support.</p>
+          <div class="chips">
+            <span class="chip">Free Shipping*</span>
+            <span class="chip">7-Day Returns</span>
+            <span class="chip">Secure Payments</span>
+          </div>
+          <div class="actions">
+            <button class="btn primary" onclick="scrollToGrid()">Explore Products</button>
+            <a class="btn secondary" href="#popular">View Popular</a>
+          </div>
+        </div>
+        <div>
+          <img loading="lazy" alt="Hero products"
+               src="https://picsum.photos/seed/vibin-hero/900/600">
+        </div>
+      </div>
+      <div class="hero-blob" aria-hidden="true"></div>
+    </section>
+
+    <!-- Products -->
+    <section id="new" class="section">
+      <h2>New Arrivals</h2>
+      <div id="productGrid" class="grid">
+        <!-- Cards injected by JS below (so you can edit the array easily) -->
+      </div>
+    </section>
+
+    <footer id="contact">
+      © <span id="year"></span> Vibin Shop • Built with ❤️ by Vibin. This is a demo storefront.
+    </footer>
+  </div>
+
+  <script>
+    // Product data — images use external placeholders (picsum). Replace with real product images anytime.
+    const products = [
+      {title:"Wireless Headphones", price:2999, rating:4.6, img:"https://picsum.photos/seed/headphones/800/800"},
+      {title:"Running Shoes", price:1999, rating:4.4, img:"https://picsum.photos/seed/shoes/800/800"},
+      {title:"Smart Watch", price:3499, rating:4.5, img:"https://picsum.photos/seed/watch/800/800"},
+      {title:"Travel Backpack", price:1499, rating:4.3, img:"https://picsum.photos/seed/backpack/800/800"},
+      {title:"Sunglasses", price:899, rating:4.2, img:"https://picsum.photos/seed/sunglasses/800/800"},
+      {title:"DSLR Camera", price:28999, rating:4.7, img:"https://picsum.photos/seed/camera/800/800"},
+      {title:"Gaming Mouse", price:1299, rating:4.4, img:"https://picsum.photos/seed/mouse/800/800"},
+      {title:"Coffee Maker", price:2199, rating:4.1, img:"https://picsum.photos/seed/coffee/800/800"}
+    ];
+
+    const grid = document.getElementById('productGrid');
+
+    products.forEach((p, idx)=>{
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="thumb">
+          <span class="badge">${idx < 3 ? 'New' : 'Bestseller'}</span>
+          <img loading="lazy" alt="${p.title}" src="${p.img}">
+        </div>
+        <div class="info">
+          <h3 class="title">${p.title}</h3>
+          <div class="meta">
+            <span class="price">₹${p.price.toLocaleString('en-IN')}</span>
+            <span>⭐ ${p.rating}</span>
+          </div>
+          <button class="btn add" onclick="alert('Demo: Added ${p.title} to cart!')">Add to Cart</button>
+        </div>`;
+      grid.appendChild(card);
+    });
+
+    function scrollToGrid(){ document.getElementById('productGrid').scrollIntoView({behavior:'smooth'}); }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
